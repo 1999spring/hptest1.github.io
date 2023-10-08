@@ -1,0 +1,92 @@
+<html class="no-js" lang="ja"><!--jsが無くても動くようにno-jsがある。日本語を指定したからjaがある-->
+
+<head id="head"></head>
+<body>
+  <div class="footerFixed">
+    <header style="background-image:url(test1.jpg)"></header>
+    <!--ここからはナビゲーションバーです。-->
+    <nav class="navbar navbar-expand-md mb-3 " style="background-color: #547e4f;" id="nav"></nav>
+    <!--ここまでは、ナビゲーションバーです。-->
+    <!--ここからは、記事です。-->
+    <article class="containe me-3 ms-3">
+      <!--ここからがメイン記事です。-->
+      <div class="container main-content">
+        <p><u>はじめに</u><br>
+          この記事は、私がYouTubeチャンネル<a href="https://youtube.com/@niwaka-king" target="_blank" rel="noopener noreferrer">数の落とし子</a>にある
+          <a href="https://youtube.com/playlist?list=PLCEodJcXgyHwld8DjnfZQZiw0kV8p-6Py" target="_blank" rel="noopener noreferrer">集合と位相</a>
+          というシリーズを勉強したものになります。ただし、正誤については全責任が私にあります。以上ご確認下さい。
+        </p>
+        <div class="box3 text-white">
+          <h1>外延的記法と内包的記法</h1>
+        </div>
+        <p>かくかくです。かくかくです。かくかくです。<br>
+          さて！見ていきましょう！さて！見ていきましょう！さて！見ていきましょう！
+        </p>>
+        <div class="toc-005">
+          <div>
+            目次
+          </div>
+          <ol>
+            <li>
+              <a href="test.html#h21">集合とは？</a>
+            </li>
+            <li>
+              <a href="test.html#h22">記法について(外延的、内包的)</a>
+              <ol>
+                <li><a href="#">見出し2-1</a></li>
+                <li><a href="#">見出し2-2</a></li>
+              </ol>
+            </li>
+          </ol>
+          </div>
+        <h2 id="h21">集合とは？</h2>
+        <p>"モノ"のあつまりのこと<br>\(x\)が\(X\)を構成する” モノ” のひとつのき、\(x\)は\(X\)の元(または、要素)
+          といい$$x\in X$$と書く。<br>また、\(x\)が\(X\)の元でないとき\(x\notin X\)と書く。<br>
+          集合\(X\)に対し元をひとつも持たないとき\(X\)は空集合である。といい\(\phi \)と書く。
+        </p>
+        <div class="box2">
+          <p>例:<br>
+            \(\mathbb{N}\):自然数全体の集合<br>
+            \(\mathbb{Z}\):整数全体の集合<br>
+            \(\mathbb{Q}\):有理数全体の集合<br>
+            \(\mathbb{R}\):実数全体の集合<br>
+            \(\mathbb{C}\):複素数全体の集合
+          </p>
+        </div>
+        <p>
+          \begin{gather}
+          3\in\mathbb{N} \quad -5\notin\mathbb{N} \quad -10\in\mathbb{Z} \\
+          \frac{2}{3}\in\mathbb{Q} \quad \sqrt{2}\notin\mathbb{Q} \quad \sqrt{5}\in\mathbb{R} \\
+          1+2i\notin\mathbb{R} \quad 3+5i\in\mathbb{C}\\
+          \end{gather}<br>
+        </p>
+        <h2 id="h22">記法について(外延的、内包的)</h2>
+        <p>外延的記法とは集合の要素を具体的に書き表す記法
+          \begin{gather*}
+          \{1,2,5,2/3,\pi \}
+          \end{gather*}
+          内包的記法<br>
+          \begin{gather*}
+          \mathbb{N}=\{n \mid n\text{は自然数} \}=\{1,2,3,\cdots \}
+          \end{gather*}
+          \(\{x \mid 0 < x &lt 1\} は外延的記法では書けない。\)<br>
+        </p>
+      </div>
+      <!--ここまでがメイン記事です。-->
+      <!--ここからサイドバーです。-->
+      <div class="side" id="side"></div> 
+      <!--ここまでがサイドバーです。-->
+    </article>
+    <!--ここまでが記事です。-->
+    <!--ここからは、フッターです。-->
+    <footer id="footer"></footer>
+    <!--ここまでは、フッターです。-->
+  </div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="./Js/main.js"></script>
+</body>
+
+</html>
