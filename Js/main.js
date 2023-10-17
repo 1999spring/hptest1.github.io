@@ -23,7 +23,6 @@ include.send(); */
 const includer = (file_name,id) =>{
   const include = new XMLHttpRequest();
   include.open("GET", "include/"+file_name, true);
-  console.log("include/"+file_name)
   include.onreadystatechange = function () {
     if (include.readyState === 4 && include.status === 200) {
       const HTML = include.responseText;
@@ -32,11 +31,11 @@ const includer = (file_name,id) =>{
     }
   };
   include.send();
-  console.log('a')
 };
 
 includer("head.html","head");
 includer("nav.html","nav");
+includer("article1.html","main-content");
 includer("side.html","side");
 includer("footer.html","footer")
 
@@ -117,4 +116,35 @@ elements[0].onmouseout = function () {
 };
  */
 
+
+const baseHtml = document.querySelector('.spreadsheets--item');
+const spreadsheets = document.querySelector('.spreadsheets');
+const apiURL = 'https://script.google.com/macros/s/AKfycby3qsRFhIGIOWKSV6SXI7l4gkfUBco8of0DBUAtGfbo58DhzjoqAa4OBqJ_0uW5zodbXg/exec';
+
+async function loadData() {
+  const response = await fetch(apiURL);
+  const data = await response.json();
+  for (let i = 0; i <= 4 ; i++){
+    const entry = data[i];
+    const copy = baseHtml.cloneNode(true);
+    copy.classList.remove('js-base');
+    const date = new Date(entry.day);
+    // 年、月、日、曜日を取得
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1; // 月は0から始まるため+1する
+    let day = date.getDate();
+    // フォーマットされた日付文字列を作成
+    let formattedDate = year + '.' + month + '.' + day;
+    //console.log(formattedDate); // "2023/10/2(月)"
+    copy.querySelector('.spreadsheets--name').textContent = entry.title;
+    copy.querySelector('.spreadsheets--name').href = entry.link;
+    copy.querySelector('.spreadsheets--age').textContent = "更新日："+formattedDate;
+    copy.querySelector('.spreadsheets--content').innerHTML = "内容："+entry.content;
+    copy.querySelector('.spreadsheets--img').src = entry.image;
+    spreadsheets.appendChild(copy);
+  };
+
+}
+
+loadData();
 
