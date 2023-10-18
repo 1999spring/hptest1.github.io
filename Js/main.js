@@ -148,3 +148,9 @@ async function loadData() {
 
 loadData();
 
+const button = document.getElementById("myButton");
+
+// ボタンがクリックされたときの処理を設定
+button.addEventListener("click", function() {
+  window.location.reload()
+});
