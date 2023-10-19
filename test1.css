@@ -52,9 +52,10 @@ body{
 
 /* サイドバーのスタイル */
 .article > div:nth-child(2) {
-  flex-basis: 30%; /* 固定サイズ（お好みで変更） */
+  width: 35%; /* 固定サイズ（お好みで変更） */
   background-color: lightgray; /* 背景色（お好みで変更） */
   padding: 20px; /* 内部余白（お好みで調整） */
+  overflow: hidden;
 }
 
 .spreadsheets--item {
@@ -147,4 +148,52 @@ body{
 .toc-005 a:hover {
   color: #547e4f;
   text-decoration: none;
+}
+
+.spreadsheets--name {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.spreadsheets--item {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  background: #FFF;
+  border-top: solid 6px #70a96a;/*線*/
+  border-radius: 10px;/*角の丸み*/
+  color: #000;
+}
+
+.spreadsheets--item a{
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+}
+
+.spreadsheets--item img{
+  margin-right: 1em;
+  width: 5em;
+  height: 5em;
+}
+
+.spreadsheets--item:hover{
+  background-color: #e5fce3;
+}
+
+.article-list {
+  padding: 1em 2em;
+  margin: 2em 0;
+  background: #70a96a;/*背景色*/
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.article-list span {
+  color: #ffffff;
 }
