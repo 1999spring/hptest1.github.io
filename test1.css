@@ -197,3 +197,16 @@ body{
 .article-list span {
   color: #ffffff;
 }
+
+.category-list {
+  padding: 1em 2em;
+  margin: 2em 0;
+  background: #70a96a;/*背景色*/
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.category-list span {
+  color: #ffffff;
+}
