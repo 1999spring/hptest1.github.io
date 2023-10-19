@@ -21,43 +21,73 @@ checkViewportSize();
 // ウィンドウのリサイズ時にも実行
 window.addEventListener("resize", checkViewportSize);
 
+test = document.querySelector('.spreadsheets');
+console.log(test);
 
-const baseHtml = document.querySelector('.spreadsheets--item');
-const spreadsheets = document.querySelector('.spreadsheets');
-const apiURL = 'https://script.google.com/macros/s/AKfycby3qsRFhIGIOWKSV6SXI7l4gkfUBco8of0DBUAtGfbo58DhzjoqAa4OBqJ_0uW5zodbXg/exec';
+const apiURL = 'https://script.google.com/macros/s/AKfycbwsMtKiI42v2YuCsINNWaMBsm87WS1BdJTGynhjhQxrYktVb4Fc76-P0IWBvUadt9eAqg/exec';
 
-async function loadData() {
-  const response = await fetch(apiURL);
-  const data = await response.json();
-  for (let i = 0; i <= 4 ; i++){
-    const entry = data[i];
-    const copy = baseHtml.cloneNode(true);
-    copy.classList.remove('js-base');
-    const date = new Date(entry.day);
-    // 年、月、日、曜日を取得
-    let year = date.getFullYear();
-    let month = date.getMonth() + 1; // 月は0から始まるため+1する
-    let day = date.getDate();
-    // フォーマットされた日付文字列を作成
-    let formattedDate = year + '.' + month + '.' + day;
-    //console.log(formattedDate); // "2023/10/2(月)"
-    copy.querySelector('.spreadsheets--name').textContent = 'タイトル：'+entry.title;
-    copy.querySelector('.link').href = entry.link;
-    copy.querySelector('.spreadsheets--img').src = entry.image;
-    spreadsheets.appendChild(copy);
+
+
+
+
+const includer1 = (file_name,id) =>{
+  const include = new XMLHttpRequest();
+  include.open("GET", "include/"+file_name, true);
+  include.onreadystatechange = function () {
+      if (include.readyState === 4 && include.status === 200) {
+      const HTML = include.responseText;
+      const contents = document.querySelector("#"+id);
+      contents.insertAdjacentHTML("afterbegin", HTML);
+      //DOM操作
+      const baseHtml = contents.querySelector('.spreadsheets--item');
+      const spreadsheets = contents.querySelector('.spreadsheets');
+      async function loadData() {
+        const response = await fetch(apiURL);
+        const data = await response.json();
+        for (let i = 0; i <= 4 ; i++){
+          const entry = data[i];
+          const copy = baseHtml.cloneNode(true);
+          copy.classList.remove('js-base');
+          const date = new Date(entry.day);
+          // 年、月、日、曜日を取得
+          let year = date.getFullYear();
+          let month = date.getMonth() + 1; // 月は0から始まるため+1する
+          let day = date.getDate();
+          // フォーマットされた日付文字列を作成
+          let formattedDate = year + '.' + month + '.' + day;
+          //console.log(formattedDate); // "2023/10/2(月)"
+          copy.querySelector('.spreadsheets--name').textContent = 'タイトル：'+entry.title;
+          copy.querySelector('.link').href = entry.link;
+          copy.querySelector('.spreadsheets--img').src = entry.image;
+          spreadsheets.appendChild(copy);
+        };
+      
+      }
+
+      const spreadsheets1 = contents.querySelector('.js-base');
+      console.log(spreadsheets1);
+
+      if (spreadsheets1) {
+        spreadsheets1.parentNode.removeChild(spreadsheets1);
+}
+      loadData();
+      }
   };
+  include.send();
+};
 
-}
-
-loadData();
+includer1("side.html","side");
 
 
-const spreadsheets1 = document.querySelector('.js-base');
-console.log(spreadsheets1);
 
-if (spreadsheets1) {
-  spreadsheets1.parentNode.removeChild(spreadsheets1);
-}
+
+
+
+
+
+
+
+
 
 /* window.addEventListener('load', function() {
   const textContainer = document.getElementById('text-container');
