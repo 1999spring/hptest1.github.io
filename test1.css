@@ -111,6 +111,7 @@ body{
   flex-grow: 0; /* 拡大可能なスペースを持つ */
   background-color: #ffffff; /* 背景色を指定*/
   padding: 20px; /* 内部余白（お好みで調整） */
+  position: relative;
 }
 
 .title {
@@ -357,6 +358,7 @@ body{
   border-collapse: collapse;
   border-spacing: 0;
   border-top: solid 1px #778ca3;
+  margin-bottom: 30vh;
 }
 
 .article-list tr:nth-child(n) {
@@ -395,4 +397,19 @@ body{
   bottom: 0;
   right: 0;
   margin-top: 20vh;
+}
+
+.pagenation{
+  position: absolute;/* ←親要素つまり、footerFiexedの中での絶対位置 */
+  bottom: 0;/* ←一番下に固定*/
+  display: flex;/* ←子要素の位置を自由にした。*/
+  align-items: center;/* ←子要素の位置を縦方向で真ん中にした。*/
+  justify-content: space-around;/* ←子要素の位置を横方向で真ん中にした。*/
+  height: 10vh; /* ←高さを指定*/
+  width: 100%;/* ←横幅を指定*/
+}
+
+.pagenation span{
+  color: black;
+  cursor: pointer;
 }
