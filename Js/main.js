@@ -1,4 +1,4 @@
-// 画面の大きさがmin以下になったら要素にスタイルを設定する関数
+// 画面の大きさがmin以下になったらサイドバーを消す関数
 function checkViewportSize() {
   const min = 800; // 最小の幅（ピクセル単位）を設定
 
@@ -21,13 +21,9 @@ checkViewportSize();
 // ウィンドウのリサイズ時にも実行
 window.addEventListener("resize", checkViewportSize);
 
-test = document.querySelector('.spreadsheets');
-console.log(test);
-
-const apiURL = 'https://script.google.com/macros/s/AKfycbwsMtKiI42v2YuCsINNWaMBsm87WS1BdJTGynhjhQxrYktVb4Fc76-P0IWBvUadt9eAqg/exec';
 
 
-
+const apiURL = 'https://script.google.com/macros/s/AKfycbwr2_yBunIZqw2theL2eHCCs65-DvJ3QmNEoT0na5gHALdjlq3JE_RuC2ZLlVulLTqlTg/exec';
 
 
 const includer1 = (file_name,id) =>{
@@ -48,28 +44,61 @@ const includer1 = (file_name,id) =>{
           const entry = data[i];
           const copy = baseHtml.cloneNode(true);
           copy.classList.remove('js-base');
-          const date = new Date(entry.day);
-          // 年、月、日、曜日を取得
-          let year = date.getFullYear();
-          let month = date.getMonth() + 1; // 月は0から始まるため+1する
-          let day = date.getDate();
-          // フォーマットされた日付文字列を作成
-          let formattedDate = year + '.' + month + '.' + day;
-          //console.log(formattedDate); // "2023/10/2(月)"
           copy.querySelector('.spreadsheets--name').textContent = 'タイトル：'+entry.title;
           copy.querySelector('.link').href = entry.link;
           copy.querySelector('.spreadsheets--img').src = entry.image;
           spreadsheets.appendChild(copy);
         };
-      
+
+        
+        
+        let button = contents.querySelector('#getWordButton');
+        // ボタンがクリックされたときに実行する関数を定義
+        function serchWord() {
+            // 入力フィールドから値を取得
+            let word = document.querySelector("#wordInput").value;
+            const ans = [];
+            data.forEach((ele,index) => {
+              const sentence = ele.content;
+              const regex = new RegExp(word, "g");
+              const match = sentence.match(regex);
+              if (match) {
+                ans.push(index);
+              };
+              
+            });
+            sessionStorage.setItem("word", word);
+            sessionStorage.setItem("ans", ans);
+
+            
+
+            
+            
+        }
+
+        // ボタンにクリックイベントリスナーを追加
+        button.addEventListener("click", serchWord);
+        button.addEventListener('click', function() {
+          // ページ遷移を行う
+          window.location.href = 'article_list.html'; // この行を実際のURLに置き換えてください
+      });
+
+        
+        
+
+        
+
       }
 
       const spreadsheets1 = contents.querySelector('.js-base');
-      console.log(spreadsheets1);
 
       if (spreadsheets1) {
         spreadsheets1.parentNode.removeChild(spreadsheets1);
-}
+      };
+
+    
+      
+
       loadData();
       }
   };
@@ -85,34 +114,3 @@ includer1("side.html","side");
 
 
 
-
-
-
-
-/* window.addEventListener('load', function() {
-  const textContainer = document.getElementById('text-container');
-  const text = textContainer.textContent;
-  const maxLines = 1; // 1行目の後に"..."を表示する
-  const lineHeight = parseFloat(getComputedStyle(textContainer).lineHeight);
-  const containerHeight = textContainer.clientHeight;
-  const lines = containerHeight / lineHeight;
-
-  if (lines > maxLines) {
-    const lineBreakIndex = text.indexOf('\n');
-    if (lineBreakIndex >= 0) {
-      const newText = text.slice(0, lineBreakIndex) + '...';
-      textContainer.textContent = newText;
-    }
-  }
-}); */
-
-/* window.addEventListener('load', function() {
-  const textContainer = document.getElementsByClassName('spreadsheets--name');
-  const computedStyle = getComputedStyle(textContainer[0]);
-  const lineHeight = parseFloat(computedStyle.lineHeight);
-  const containerHeight = textContainer[0].clientHeight;
-  const lines = containerHeight / lineHeight;
-  console.log(lineHeight);
-  console.log(containerHeight);
-  console.log('行数:', lines);
-}); */

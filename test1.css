@@ -1,3 +1,63 @@
+/* Loading画面 */
+.footerFixed{
+  position: absolute;
+  color: black;
+  transition: all 0.3s;
+  transition-delay: 0.3s;
+}
+
+.loader{
+  height: 40vh;
+  width: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.loader span{
+  position: absolute;
+  border: 2px solid #25c85c;
+  width: 100%;
+  height: 100%;
+  animation: animate 5s linear infinite;
+}
+
+.loader span:nth-child(1){
+  border-radius: 83% 17% 17% 83% / 50% 14% 86% 50% ;
+}
+
+.loader span:nth-child(2){
+  animation-direction: reverse;
+  border-radius: 30% 70% 17% 83% / 79% 14% 86% 21% ;
+}
+
+.loader span:nth-child(3){
+  animation-delay: 0.4s;
+  border-radius: 40% 60% 51% 49% / 98% 14% 86% 2% ;
+}
+
+@keyframes animate{
+  0%{
+      transform: rotate(0deg);
+  }
+  100%{
+      transform: rotate(360deg);
+  }
+}
+
+.loader h2{
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.loaded{
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+/* 画面全体 */
 body{
   background-color: rgb(240, 252, 236);/* ←背景色を指定*/
   background-size: cover;/* ←背景色を全体へ*/
@@ -10,15 +70,18 @@ body{
   box-sizing: border-box;/* ←ヘッダーやフッターを含むすべての要素の高さ＝min-height:100vhになるように固定 */
 }
 
+/* header */
 .header{
 	height: 10vh; /* ←高さを指定*/
   background-image:url(test1.jpg); /* ←ヘッダーを覆うように画像を挿入している。 */
 }
 
+/* navbar */
 .navbar{
   background-color: #547e4f;/* ←ナビバーの背景色を指定。*/
 }
 
+/* footer */
 .footer{
   position: absolute;/* ←親要素つまり、footerFiexedの中での絶対位置 */
   bottom: 0;/* ←一番下に固定*/
@@ -35,7 +98,7 @@ body{
   text-align: center;/*文字を中央揃え*/
 }
 
-/* 記事全体のスタイル */
+/* 記事全体(サイドバー含む)のスタイル */
 .article{
   margin-left: 2em; /*←左にを空白を追加*/
   margin-right: 2em; /*←右にを空白を追加*/
@@ -48,18 +111,6 @@ body{
   flex-grow: 0; /* 拡大可能なスペースを持つ */
   background-color: #ffffff; /* 背景色を指定*/
   padding: 20px; /* 内部余白（お好みで調整） */
-}
-
-/* サイドバーのスタイル */
-.article > div:nth-child(2) {
-  width: 35%; /* 固定サイズ（お好みで変更） */
-  background-color: lightgray; /* 背景色（お好みで変更） */
-  padding: 20px; /* 内部余白（お好みで調整） */
-  overflow: hidden;
-}
-
-.spreadsheets--item {
-  list-style: none;
 }
 
 .title {
@@ -75,26 +126,13 @@ body{
   font-size: 2rem;
 }
 
-.box2 {
-  padding: 0.5em 1em;
-  margin: 2em 0;
-  font-weight: bold;
-  background: #FFF;
-  border: solid 3px #70a96a;/*線*/
-  border-radius: 10px;/*角の丸み*/
-}
-.box2 p {
-  margin: 0; 
-  padding: 0;
-}
-
-.toc-005 {
+.toc-article {
   margin-bottom: 30px;
   border-radius: 3px;
   background-color: #f2f2f2;
 }
 
-.toc-005 div {
+.toc-article div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,7 +144,7 @@ body{
   font-size: 1.1em;
 }
 
-.toc-005 div::before {
+.toc-article div::before {
   display: inline-block;
   width: 1em;
   height: 1em;
@@ -115,39 +153,77 @@ body{
   content: '';
 }
 
-.toc-005 ol {
+.toc-article ol {
   list-style-type: decimal;
   margin: 0;
   overflow: hidden;
 }
 
-.toc-005 > ol {
+.toc-article > ol {
   padding: 1em 1em 1em 3em;
 }
 
-.toc-005 ol ol {
+.toc-article ol ol {
   margin-top: 5px;
   padding-left: 1.1em;
 }
 
-.toc-005 li {
+.toc-article li {
   padding: 5px 0;
   font-weight: 600;
 }
 
-.toc-005 ol ol li {
+.toc-article ol ol li {
   font-weight: 500;
   font-size: .9em;
 }
 
-.toc-005 a {
+.toc-article a {
   color: #333;
   text-decoration: none;
 }
 
-.toc-005 a:hover {
+.toc-article a:hover {
   color: #547e4f;
   text-decoration: none;
+}
+
+.ex-box {
+  padding: 0.5em 1em;
+  margin: 2em 0;
+  font-weight: bold;
+  background: #FFF;
+  border: solid 3px #70a96a;/*線*/
+  border-radius: 10px;/*角の丸み*/
+}
+.ex-box p {
+  margin: 0; 
+  padding: 0;
+}
+
+/* サイドバーのスタイル */
+.article > div:nth-child(2) {
+  width: 35%; /* 固定サイズ（お好みで変更） */
+  background-color: lightgray; /* 背景色（お好みで変更） */
+  padding: 20px; /* 内部余白（お好みで調整） */
+  overflow: hidden;
+}
+
+.latest-article {
+  padding: 1em 2em;
+  margin: 2em 0;
+  background: #70a96a;/*背景色*/
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.latest-article span {
+  color: #ffffff;
+}
+
+.spreadsheets--item {
+  list-style: none;
 }
 
 .spreadsheets--name {
@@ -185,28 +261,101 @@ body{
   background-color: #e5fce3;
 }
 
+.category-title {
+  padding: 1em 2em;
+  margin: 2em 0;
+  background: #70a96a;/*背景色*/
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.category-title span {
+  color: #ffffff;
+}
+
+.category-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: solid 1px #778ca3;
+}
+
+.category-table tr:nth-child(n) {
+  background: #ffffff;
+}
+
+.category-table tr:nth-child(n):hover,
+.category-table th:hover {
+  background-color: #e5fce3a0;
+}
+
+.category-table td {
+  padding: 10px;
+  border-bottom: solid 1px #778ca3;
+}
+
+
+.category-table th {
+  padding: 10px;
+  border-bottom: solid 1px #778ca3;
+  background-color: rgb(240, 252, 236);
+}
+
+.list-link {
+  cursor: pointer;
+  position: relative;
+}
+
+.list-link img {
+  width: 10rem;
+  height: 10rem;
+}
+
+/* 記事一覧 */
 .article-list {
-  padding: 1em 2em;
-  margin: 2em 0;
-  background: #70a96a;/*背景色*/
-  display: flex;
-  justify-content: center;
-  align-self: center;
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: solid 1px #778ca3;
 }
 
-.article-list span {
-  color: #ffffff;
+.article-list tr:nth-child(n) {
+  background: #ffffff;
 }
 
-.category-list {
-  padding: 1em 2em;
-  margin: 2em 0;
-  background: #70a96a;/*背景色*/
-  display: flex;
-  justify-content: center;
-  align-self: center;
+/* .article-list tr:nth-child(n):hover,
+.article-list th:hover {
+  background-color: #e5fce3a0;
+} */
+
+.article-list td {
+  padding: 10px;
+  border-bottom: solid 1px #778ca3;
 }
 
-.category-list span {
-  color: #ffffff;
+
+.article-list th {
+  padding: 10px;
+  border-bottom: solid 1px #778ca3;
+  background-color: rgb(240, 252, 236);
+}
+
+.table-link {
+  /* cursor: pointer; */
+  position: relative;
+}
+
+.table-link img {
+  width: 10rem;
+  height: 10rem;
+}
+
+.update span {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-top: 20vh;
 }
