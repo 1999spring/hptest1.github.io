@@ -209,6 +209,43 @@ body{
   overflow: hidden;
 }
 
+.search {
+  display: flex;
+  width: 100%;
+}
+
+.search input[type=text] {
+  width: 100%;
+  font-size: 20px;
+  padding: 0 6px;
+  color: #474747;
+  border: 2px solid #474747;
+  border-radius: 3px 0 0 3px;
+  outline: none;
+}
+
+.search button[type=submit] {
+  /* padding: 10px 20px; */
+  font-size: 1rem;
+  color: #FFF;
+  background: #474747;
+  border: 2px solid #474747;
+  border-radius: 0 3px 3px 0;
+  cursor: pointer;
+}
+
+
+
+
+.limegreen input[type=text] {
+  border-color: #70a96a;
+}
+
+.limegreen button[type=submit] {
+  border-color: #70a96a;
+  background: #70a96a;
+}
+
 .latest-article {
   padding: 1em 2em;
   margin: 2em 0;
