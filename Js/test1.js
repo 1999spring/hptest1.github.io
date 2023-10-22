@@ -56,7 +56,7 @@ const includer3 = (file_name,id) =>{
         async function loadData1() {
             const response = await fetch(apiURL);
             const data1 = await response.json();
-            const max = 5;
+            const max = 3;
             const pageNum = Math.ceil(data1.length/max);
             if (noww>pageNum){
                 noww = pageNum;
@@ -120,7 +120,8 @@ const includer3 = (file_name,id) =>{
                     const formattedDate = `${year}/${month}/${day}`;
                     const copy = baseList.cloneNode(true);
                     copy.querySelector('.list-title').textContent = entry.title;
-                    copy.querySelector('.list-link').href = entry.link;
+                    /* copy.querySelector('.list-link').href = entry.link; */
+                    copy.setAttribute('onclick', "window.location.href="+"'"+entry.link+"'");
                     /* copy.querySelector('.link').href = entry.link; */
                     copy.querySelector('.list-img').src = entry.image;
                     copy.querySelector('.list-content').textContent = entry.content;

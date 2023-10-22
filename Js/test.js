@@ -37,7 +37,8 @@ const includer2 = (file_name,id) =>{
                 const formattedDate = `${year}/${month}/${day}`;
                 const copy = baseList.cloneNode(true);
                 copy.querySelector('.list-title').textContent = entry.title;
-                copy.querySelector('.list-link').href = entry.link;
+                /* copy.querySelector('.list-link').href = entry.link; */
+                copy.setAttribute('onclick', "window.location.href="+"'"+entry.link+"'");
                 /* copy.querySelector('.link').href = entry.link; */
                 copy.querySelector('.list-img').src = entry.image;
                 copy.querySelector('.list-content').textContent = entry.content;
