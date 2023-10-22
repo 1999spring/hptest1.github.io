@@ -183,6 +183,7 @@ const includer3 = (file_name,id,categorySet) =>{
                         let category = element.id;
                         console.log(category);
                         sessionStorage.setItem('category', category);
+                        sessionStorage.setItem('now', 1);
                         
                     } else if(element.style.display === 'block'){
                         element.style.display = 'none'; // それ以外の要素には非表示
