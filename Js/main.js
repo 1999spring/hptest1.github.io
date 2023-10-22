@@ -1,3 +1,19 @@
+let time = 1700;
+
+window.onload = function(){
+  setTimeout(()=>{
+      const loader = document.querySelector('.loader');
+      loader.classList.add("loaded")
+      const content = document.querySelector('.footerFixed');
+      content.style.display = 'block';
+      const cover = document.querySelector('.cover');
+      cover.style.display = 'none';
+      
+  },time)
+  
+}
+
+
 // 画面の大きさがmin以下になったらサイドバーを消す関数
 function checkViewportSize() {
   const min = 800; // 最小の幅（ピクセル単位）を設定
@@ -75,12 +91,13 @@ const includer1 = (file_name,id) =>{
             
             
         }
-
+      
         // ボタンにクリックイベントリスナーを追加
         button.addEventListener("click", serchWord);
         button.addEventListener('click', function() {
           // ページ遷移を行う
           window.location.href = 'article_list.html'; // この行を実際のURLに置き換えてください
+        
       });
 
         
@@ -96,6 +113,7 @@ const includer1 = (file_name,id) =>{
         spreadsheets1.parentNode.removeChild(spreadsheets1);
       };
 
+      
     
       
 
@@ -105,7 +123,12 @@ const includer1 = (file_name,id) =>{
   include.send();
 };
 
-includer1("side.html","side");
+/* includer1("side.html","side"); */
+
+
+
+
+includer1("side.html","side")
 
 
 

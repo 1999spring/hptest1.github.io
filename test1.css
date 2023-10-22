@@ -413,3 +413,46 @@ body{
   color: black;
   cursor: pointer;
 }
+
+
+
+.category-list {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+  border-top: solid 1px #778ca3;
+  margin-bottom: 5vh;
+}
+
+.category-list tr:nth-child(n) {
+  background: #ffffff;
+  border-bottom: solid 1px #778ca3;
+}
+
+.category-list tr:nth-child(n):hover,
+.category-list th:hover {
+  background-color: #e5fce3a0;
+}
+
+.category-list td {
+  padding: 10px;
+  /* border-bottom: solid 1px #778ca3; */
+}
+
+
+.category-list th {
+  padding: 10px;
+  /* border-bottom: solid 1px #778ca3; */
+  /* background-color: rgb(240, 252, 236); */
+}
+
+.list-link {
+  cursor: pointer;
+  position: relative;
+}
+
+.list-link img {
+  width: 10rem;
+  height: 10rem;
+}

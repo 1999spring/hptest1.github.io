@@ -15,10 +15,12 @@
                 カテゴリー
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item text-black" href="#">数学</a>
-                <a class="dropdown-item text-black" href="#">集合と位相</a>
-                <a class="dropdown-item text-black" href="#">ルベーグ積分</a>
-                <a class="dropdown-item text-black" href="#">確率統計</a>
+                <span class="dropdown-item text-black">数学</span>
+                <span class="dropdown-item text-black" onclick="window.location.href='set.html';sessionStorage.setItem('category', 'set');">集合と位相</span>
+                <span class="dropdown-item text-black" onclick="window.location.href='set.html';sessionStorage.setItem('category', 'lebesgue');">ルベーグ積分</span>
+                <span class="dropdown-item text-black" onclick="window.location.href='set.html';sessionStorage.setItem('category', 'prob');">確率論</span>
+                <span class="dropdown-item text-black">物理</span>
+                <span class="dropdown-item text-black" onclick="window.location.href='set.html';sessionStorage.setItem('category', 'quantum');">量子力学</span>
             </div>
         </li>
     </ul>
