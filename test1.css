@@ -98,6 +98,13 @@ body{
   text-align: center;/*文字を中央揃え*/
 }
 
+/* ホーム画面 */
+.homeimg{
+  width: 100%;
+  height: 70vh;
+}
+
+
 /* 記事全体(サイドバー含む)のスタイル */
 .article{
   margin-left: 2em; /*←左にを空白を追加*/
@@ -200,6 +207,19 @@ body{
 .ex-box p {
   margin: 0; 
   padding: 0;
+}
+
+.testimg1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column;
+}
+
+.testimg{
+  width: 30vmin;
+  height: 30vmin;
+  border: 1px solid black;
 }
 
 /* サイドバーのスタイル */
